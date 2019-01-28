@@ -5,6 +5,8 @@ import me.ls.api.event.PacketEventListener;
 import me.ls.api.netObj.BetterClient;
 import me.ls.api.netObj.BetterServer;
 
+import java.io.IOException;
+
 public class BetterPackets {
 
     /**
@@ -15,7 +17,12 @@ public class BetterPackets {
      * @return The new created server (not started!)
      */
     public static BetterServer createServer(int port){
-        return new BetterServer(port);
+        try {
+            return new BetterServer(port);
+        } catch (IOException e) {
+            System.out.println("Port already in use");
+        }
+        return null;
     }
 
     /**

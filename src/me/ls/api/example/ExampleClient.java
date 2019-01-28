@@ -8,6 +8,8 @@ import me.ls.api.event.events.ClientPacketReceive;
 import me.ls.api.netObj.BetterClient;
 import me.ls.api.packet.BetterPacket;
 
+import java.io.IOException;
+
 public class ExampleClient implements PacketEventListener {
 
     /**
@@ -33,7 +35,11 @@ public class ExampleClient implements PacketEventListener {
          *
          */
         client = BetterPackets.createClient("localhost", 33333);
-        client.connect();
+        try {
+            client.connect();
+        } catch (IOException e) {
+            System.out.println("Unknown host");
+        }
 
     }
 
