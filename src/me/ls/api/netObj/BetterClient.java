@@ -25,15 +25,11 @@ public class BetterClient {
 
     }
 
-    public void connect(){
-        try {
+    public void connect() throws IOException {
 
-            socket = new Socket(host, port);
-            startListening();
+        socket = new Socket(host, port);
+        startListening();
 
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public void disconnect(){

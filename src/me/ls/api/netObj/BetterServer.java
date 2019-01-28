@@ -19,15 +19,11 @@ public class BetterServer {
 
     private int port;
 
-    public BetterServer(int port) {
+    public BetterServer(int port) throws IOException {
 
         this.port = port;
 
-        try {
-            serverSocket = new ServerSocket(port);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        serverSocket = new ServerSocket(port);
 
     }
 
