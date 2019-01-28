@@ -16,13 +16,8 @@ public class BetterPackets {
      * @param port Port to start the server on
      * @return The new created server (not started!)
      */
-    public static BetterServer createServer(int port){
-        try {
-            return new BetterServer(port);
-        } catch (IOException e) {
-            System.out.println("Port already in use");
-        }
-        return null;
+    public static BetterServer createServer(int port) throws IOException {
+        return new BetterServer(port);
     }
 
     /**
