@@ -10,6 +10,8 @@ import me.ls.api.netObj.BetterServer;
 import me.ls.api.netObj.BetterServerClient;
 import me.ls.api.packet.BetterPacket;
 
+import java.io.IOException;
+
 
 /**
  *
@@ -35,7 +37,12 @@ public class ExampleServer implements PacketEventListener {
          *
          * This Server will start with port 333333
          */
-        server = BetterPackets.createServer(33333);
+        try {
+            server = BetterPackets.createServer(33333);
+        } catch (IOException e) {
+            System.out.println("Port already in use");
+            return;
+        }
         server.start();
 
     }
