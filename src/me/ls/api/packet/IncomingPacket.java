@@ -14,18 +14,24 @@ public class IncomingPacket extends Packet implements BetterPacket {
         String in = new String(Base64.decode(rawIn));
 
         type = in.split("#")[0];
+        try {
 
-        String enContent = new String(Base64.decode(new String(Base64.decode(in.split("#")[1]))));
-
-        if(enContent.contains("#")){
-            for(String encrypteTile : enContent.split("#")){
-                String decrypted = new String(Base64.decode(encrypteTile));
-                content.add(decrypted);
+            String enContent = new String(Base64.decode(in.split("#")[1]));
+            if(enContent.contains("#")){
+                for(String encrypteTile : enContent.split("#")){
+                    String decrypted = new String(Base64.decode(encrypteTile));
+                    content.add(decrypted);
+                }
+            }else{
+                content.add(new String(Base64.decode(enContent)));
             }
-        }else{
-            content.add(enContent);
+
+        }catch (Exception e){
+            content.add("");
         }
+
     }
+
 
     public String getType(){
         return type;

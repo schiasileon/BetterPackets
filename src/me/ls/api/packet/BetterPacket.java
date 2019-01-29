@@ -12,12 +12,14 @@ public interface BetterPacket {
 
         String content = "";
 
-        if(p.getContent().length > 0) {
+        try {
             for (String tile : p.getContent()) {
                 content += Base64.encode(tile.getBytes()) + " ";
             }
             content = content.trim().replaceAll(" ", "#");
+        }catch (Exception e){
         }
+
         String contentEnc = Base64.encode(content.getBytes());
 
         String send = Base64.encode((p.getType()+"#"+contentEnc).getBytes());

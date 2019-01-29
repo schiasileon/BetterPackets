@@ -18,12 +18,17 @@ public class BetterClient {
     private String host;
     private int port;
 
-    public void connect(String host, int port) throws IOException {
+    public boolean connect(String host, int port) {
 
         this.host = host;
         this.port = port;
-        socket = new Socket(host, port);
-        startListening();
+        try {
+            socket = new Socket(host, port);
+            startListening();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
 
     }
 
