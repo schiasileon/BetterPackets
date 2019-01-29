@@ -34,9 +34,9 @@ public class ExampleClient implements PacketEventListener {
          * In this example it will try to connect to localhost:33333
          *
          */
-        client = BetterPackets.createClient("localhost", 33333);
+        client = BetterPackets.createClient();
         try {
-            client.connect();
+            client.connect("localhost", 33333);
         } catch (IOException e) {
             System.out.println("Unknown host");
         }

@@ -24,12 +24,10 @@ public class BetterPackets {
      *
      * Read ExampleClient for complete documentation and explanation
      *
-     * @param host The host (ip) to connect to
-     * @param port The port the server is on
      * @return The new created client (not started/connected)
      */
-    public static BetterClient createClient(String host, int port){
-        return new BetterClient(host, port);
+    public static BetterClient createClient(){
+        return new BetterClient();
     }
 
     /**
