@@ -63,7 +63,6 @@ public class BetterServerClient {
                     writer.println(BetterPacket.preparePacket(packet));
                     writer.flush();
                 }catch (IOException e){
-                    e.printStackTrace();
                 }
             }
         }).start();
